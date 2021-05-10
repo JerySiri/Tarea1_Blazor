@@ -1,7 +1,55 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>Calculadora</h1>
 
-Welcome to your new app.
+<p> </p>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<h4>Primer Número</h4>
+<input type="text" name = primerNumeroText/>
+
+<h4>Segundo Número</h4>
+<input type="text" name = segundoNumeroText />
+
+<p> </p>
+
+<p>Suma: @resultadoSuma</p>
+<p>Resta: @resultadoResta</p>
+<p>Multiplicacion: @resultadoMultiplicacion</p>
+
+<button class="btn btn-primary" @onclick="Calcular">Calcular</button>
+
+@code {
+    private int resultadoSuma = 0;
+    private int resultadoResta = 0;
+    private int resultadoMultiplicacion = 0;
+    private string primerNumero = "0";
+    private string segundoNumero ="10";
+
+    private int Sumar()
+    {
+        int resultado = Int32.Parse(primerNumero) + Int32.Parse(segundoNumero);
+
+        return resultado;
+    }
+
+    private int restar()
+    {
+        int resultado = Int32.Parse(primerNumero) - Int32.Parse(segundoNumero);
+
+        return resultado;
+    }
+
+    private int multiplicar()
+    {
+        int resultado = Int32.Parse(primerNumero) * Int32.Parse(segundoNumero);
+
+        return resultado;
+    }
+
+    private void Calcular()
+    {
+        resultadoSuma = Sumar();
+        resultadoResta = restar();
+        resultadoMultiplicacion = multiplicar();
+    }
+}
